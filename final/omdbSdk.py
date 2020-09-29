@@ -51,7 +51,8 @@ class OmdbSdk:
             'y': year
         })
         r_dict = json.loads(r.text)
-        print(r_dict)
+        print(f"\nyear: {year}")
+
         for page in range(1, int(int(r_dict['totalResults']) / 10 + 2)):
             r = requests.get('http://www.omdbapi.com/?apikey=' + self.api, params={
                 's': title,
@@ -72,7 +73,7 @@ for movie in (omdb.get_movie("movie", "Batman")):
 
 # movies by year:
 
-for movie in (omdb.get_movie_by_year("Batman", "2001")):
+for movie in (omdb.get_movie_by_year("Batman", "2005")):
     print(movie.get_title())
 
 
